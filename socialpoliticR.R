@@ -4,6 +4,7 @@ library(forecast)
 library(zoo)
 library(reshape2)
 library(lme4)
+library(Hmisc)
 
 setwd("C:/Users/jakob/Dropbox/Jakob/Stats")
 
@@ -50,6 +51,9 @@ summary(fit.FDP)
 fit.AfD <- lm(AfD ~ CDU.S + SPD.S + Grüne_S + Linke_S + keine_S + d_diff, data = projEcon)
 summary(fit.AfD)
 
+rcorr(as.matrix(projEcon[,2:13]))
+
+#########################
 ### new analysis AFD ~ SPD.S || AFD ~ CDU.CSU.S
 
 plot.ts(projEcon$AfD, col="blue", ylim=c(0,65), xlab = "Weeks", ylab = "")
